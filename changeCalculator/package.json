@@ -16,6 +16,7 @@
         "chai": "^4.2.0",
         "mocha": "^5.2.0",
         "serverless": "^1.32.0",
+        "serverless-api-cloudfront": "^0.9.4",
         "serverless-offline": "^3.28.0",
         "serverless-tools": "0.0.15",
         "supertest": "^3.3.0"

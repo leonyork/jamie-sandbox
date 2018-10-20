@@ -8,9 +8,16 @@ provider:
 
 plugins:
   - serverless-offline
+  - serverless-api-cloudfront
 
 functions:
   app:
     handler: handler.handler
     events:
       - http: 'ANY {proxy+}'
+
+custom:
+  apiCloudFront:
+    domain: changecalc.leonyork.com
+    headers: all
+    querystring: all

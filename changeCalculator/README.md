@@ -19,6 +19,8 @@ npm install
 
 ## Test
 npm test
+npm run testUnit
+npm run testIntegration
 
 ## Run Locally
 npm run local
