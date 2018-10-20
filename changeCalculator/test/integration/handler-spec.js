@@ -9,4 +9,10 @@ describe('handler', function getAsyncConcatTest() {
             .get(`/2`)
             .expect(200, `2`, done);
     });
+
+    it('should return a bad request if not called with a number', function(done) {
+        request(`http://localhost:${serverless.getSlsOfflinePort()}`)
+            .get(`/NaN`)
+            .expect(400, done);
+    });
 });
