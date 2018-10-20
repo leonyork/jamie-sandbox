@@ -13,8 +13,15 @@ Output: [200, 20, 10, 2, 2]
 
 https://github.com/jamieMeldrum/Sandbox-Python/tree/master/changeCalculator
 
+## Install
+Before use, you must install the required node modules:
+npm install
+
 ## Test
 npm test
 
+## Run Locally
+npm run local
+
 ## Deploy
-npm run deploy
+npm test && npm run deploy
