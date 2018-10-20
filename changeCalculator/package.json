@@ -4,15 +4,17 @@
     "description": "A function that takes an amount of change (in pence), and returns the shortest list of coins that add up to the specified amount",
     "main": "index.js",
     "scripts": {
-        "test": "jasmine"
+        "test": "mocha \"test/**/*spec.js\""
     },
     "author": "Leon York",
     "license": "ISC",
-    "dev-dependencies": {
-        "jasmine": "^3.2.0",
+    "devDependencies": {
+        "chai": "^4.2.0",
+        "mocha": "^5.2.0",
         "serverless": "^1.32.0",
         "serverless-offline": "^3.28.0",
-        "serverless-tools": "0.0.15"
+        "serverless-tools": "0.0.15",
+        "supertest": "^3.3.0"
     },
     "dependencies": {
         "express": "^4.16.4",
