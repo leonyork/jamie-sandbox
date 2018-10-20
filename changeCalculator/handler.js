@@ -6,7 +6,6 @@ const calculateChange = require('./change-calculator');
 
 app.get('/:total', function(req, res) {
     const total = req.params.total;
-    let response;
 
     const valid = validate(total);
     if (valid != null) {
@@ -15,7 +14,7 @@ app.get('/:total', function(req, res) {
         return;
     }
 
-    result = calculateChange(total);
+    let result = calculateChange(total);
     res.send(result);
 })
 

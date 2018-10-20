@@ -1,5 +1,12 @@
 service: change-calculator
 
+package:
+  exclude:
+    - client/**
+    - test/**
+    - README.md
+    - package-lock.json
+
 provider:
   name: aws
   runtime: nodejs6.10
@@ -8,7 +15,6 @@ provider:
 
 plugins:
   - serverless-offline
-  - serverless-api-cloudfront
 
 functions:
   app:
@@ -16,8 +22,33 @@ functions:
     events:
       - http: 'ANY {proxy+}'
 
-custom:
-  apiCloudFront:
-    domain: changecalc.leonyork.com
-    headers: all
-    querystring: all
+resources:  # CloudFormation template syntax
+  Resources:
+    CDN:
+      Type: AWS::CloudFront::Distribution
+      Properties:
+        DistributionConfig:
+          ViewerCertificate:
+            CloudFrontDefaultCertificate: true
+          Enabled: true
+          HttpVersion: http2
+          Aliases: [changecalc.leonyork.com]
+          Origins:
+            - DomainName: {"Fn::Join": ["", [{"Ref": "ApiGatewayRestApi"}, ".execute-api.${self:provider.region}.amazonaws.com"]]}
+              Id: Serverless-origin
+              OriginPath: "/${self:provider.stage}"
+              CustomOriginConfig:
+                HTTPSPort: 443
+                OriginProtocolPolicy: https-only
+          PriceClass: PriceClass_100
+          DefaultCacheBehavior:
+            ViewerProtocolPolicy: allow-all
+            TargetOriginId: Serverless-origin
+            AllowedMethods:
+              - GET
+              - HEAD
+            Compress: true
+            DefaultTTL: 30
+            MinTTL: 10
+            ForwardedValues:
+              QueryString: true
