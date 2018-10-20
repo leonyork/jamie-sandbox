@@ -5,6 +5,8 @@
     "main": "index.js",
     "scripts": {
         "test": "mocha \"test/**/*spec.js\"",
+        "testUnit": "mocha \"test/unit/*spec.js\"",
+        "testIntegration": "mocha \"test/integration/*spec.js\"",
         "deploy": "serverless deploy",
         "local": "serverless offline start"
     },
