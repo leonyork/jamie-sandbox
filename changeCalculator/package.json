@@ -4,7 +4,9 @@
     "description": "A function that takes an amount of change (in pence), and returns the shortest list of coins that add up to the specified amount",
     "main": "index.js",
     "scripts": {
-        "test": "mocha \"test/**/*spec.js\""
+        "test": "mocha \"test/**/*spec.js\"",
+        "deploy": "serverless deploy",
+        "local": "serverless offline start"
     },
     "author": "Leon York",
     "license": "ISC",
